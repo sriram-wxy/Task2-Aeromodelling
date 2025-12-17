@@ -1,0 +1,253 @@
+<robot name="drone_robot">
+
+	<!-- * * * Link Definitions * * * -->
+
+ 	<link name="base_link">
+		<visual>
+		    <origin xyz="0 0 0.0425" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.8 0.5 0.2"/>
+			</geometry>
+			<material name="Cyan1">
+	       		<color rgba="0.8 0.5 0.3 1.0"/>
+	     	</material>
+		</visual>	
+	</link>
+	<link name = "branch1">
+		<visual>
+          <geometry>
+            <box size="0.1 0.7 0.08"/>
+    </geometry>
+  </visual>
+</link>
+<joint name="branch1_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="branch1"/>
+  <origin xyz="0.43 0.4 0.1" rpy="0 0 -0.6236"/>
+</joint>
+	<link name = "branch2">
+		<visual>
+          <geometry>
+            <box size="0.1 0.7 0.08"/>
+    </geometry>
+  </visual>
+</link>
+<joint name="branch2_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="branch2"/>
+  <origin xyz="-0.43 0.4 0.1" rpy="0 0 0.6236"/>
+</joint>
+	<link name = "branch3">
+		<visual>
+          <geometry>
+            <box size="0.1 0.7 0.08"/>
+    </geometry>
+  </visual>
+</link>
+<joint name="branch3_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="branch3"/>
+  <origin xyz="-0.43 -0.4 0.1" rpy="0 0 -0.6236"/>
+</joint>
+	<link name = "branch4">
+		<visual>
+          <geometry>
+            <box size="0.1 0.7 0.08"/>
+    </geometry>
+  </visual>
+</link>
+<joint name="branch4_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="branch4"/>
+  <origin xyz="0.43 -0.4 0.1" rpy="0 0 0.6236"/>
+</joint>
+<link name = "cylinder1">
+	<visual>
+      <geometry>
+        <cylinder radius = "0.05" length = "0.5"/>
+      </geometry>
+      <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "branch1_cylinder1">
+  <parent link = "branch1"/>
+  <child link = "cylinder1"/>
+  <origin xyz = "0 0.3 0.25"/>
+</joint>
+<link name = "cylinder2">
+	<visual>
+      <geometry>
+        <cylinder radius = "0.05" length = "0.5"/>
+      </geometry>
+      <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "branch2_cylinder2">
+  <parent link = "branch2"/>
+  <child link = "cylinder2"/>
+  <origin xyz = "0 0.30 0.25"/>
+</joint>
+<link name = "cylinder3">
+	<visual>
+      <geometry>
+        <cylinder radius = "0.05" length = "0.5"/>
+      </geometry>
+      <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "branch3_cylinder3">
+  <parent link = "branch3"/>
+  <child link = "cylinder3"/>
+  <origin xyz = "0 -0.30 0.25"/>
+</joint>
+<link name = "cylinder4">
+	<visual>
+      <geometry>
+        <cylinder radius = "0.05" length = "0.5"/>
+      </geometry>
+      <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "branch4_cylinder4">
+  <parent link = "branch4"/>
+  <child link = "cylinder4"/>
+  <origin xyz = "0 -0.30 0.25"/>
+</joint>
+<link name = "rotor_1_1">
+   <visual>
+     <geometry>
+       <box size = "0.4 0.1 0.01"/>
+     </geometry>
+     <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "rotor1_1_cylinder1" type="continuous">
+  <parent link = "cylinder1"/>
+  <child link = "rotor_1_1"/>
+  <origin xyz = "0 0 0.25"/>
+  <axis xyz="0 0 1"/>
+
+</joint>
+<link name = "rotor_1_2">
+   <visual>
+     <geometry>
+       <box size = "0.4 0.1 0.01"/>
+     </geometry>
+     <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "rotor1_2_cylinder1" type="continuous">
+  <parent link = "cylinder1"/>
+  <child link = "rotor_1_2"/>
+  <origin xyz = "0 0 0.25"   rpy="0 0 1.5708"/>
+  <axis xyz="0 0 1"/>
+</joint>
+
+<link name = "rotor_2_1">
+   <visual>
+     <geometry>
+       <box size = "0.4 0.1 0.01"/>
+     </geometry>
+     <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "rotor2_1_cylinder2" type="continuous">
+  <parent link = "cylinder2"/>
+  <child link = "rotor_2_1"/>
+  <origin xyz = "0 0 0.25"/>
+  <axis xyz="0 0 1"/>
+  </joint>
+<link name = "rotor_2_2">
+   <visual>
+     <geometry>
+       <box size = "0.4 0.1 0.01"/>
+     </geometry>
+     <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "rotor2_2_cylinder2" type="continuous">
+  <parent link = "cylinder2"/>
+  <child link = "rotor_2_2"/>
+  <origin xyz = "0 0 0.25"  rpy = "0 0 1.5708"/>
+  <axis xyz="0 0 1"/>
+  </joint>
+<link name = "rotor_3_1">
+   <visual>
+     <geometry>
+       <box size = "0.4 0.1 0.01"/>
+     </geometry>
+     <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "rotor3_1_cylinder3" type="continuous">
+  <parent link = "cylinder3"/>
+  <child link = "rotor_3_1"/>
+  <origin xyz = "0 0 0.25"  rpy = "0 0 1.5708"/>
+  <axis xyz="0 0 1"/>
+  </joint>
+<link name = "rotor_3_2">
+   <visual>
+     <geometry>
+       <box size = "0.4 0.1 0.01"/>
+     </geometry>
+     <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "rotor3_2_cylinder3" type="continuous">
+  <parent link = "cylinder3"/>
+  <child link = "rotor_3_2"/>
+  <origin xyz = "0 0 0.25"  rpy = "0 0 0"/>
+  <axis xyz="0 0 1"/>
+  </joint>
+<link name = "rotor_4_1">
+   <visual>
+     <geometry>
+       <box size = "0.4 0.1 0.01"/>
+     </geometry>
+     <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "rotor4_1_cylinder4" type="continuous">
+  <parent link = "cylinder4"/>
+  <child link = "rotor_4_1"/>
+  <origin xyz = "0 0 0.25"  rpy = "0 0 1.5708"/>
+  <axis xyz="0 0 1"/>
+  </joint>
+<link name = "rotor_4_2">
+   <visual>
+     <geometry>
+       <box size = "0.4 0.1 0.01"/>
+     </geometry>
+     <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
+<joint name = "rotor4_2_cylinder4" type="continuous">
+  <parent link = "cylinder4"/>
+  <child link = "rotor_4_2"/>
+  <origin xyz = "0 0 0.25"  rpy = "0 0 0"/>
+  <axis xyz="0 0 1"/>
+  </joint>
